@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Laith98Dev\palethia\network\raknet\protocol\packet\datagram;
 
-use Laith98Dev\palethia\console\Logger;
 use Laith98Dev\palethia\network\raknet\RakBinaryStream;
 
 class DatagramIdentifier extends RakBinaryStream
@@ -33,7 +32,7 @@ class DatagramIdentifier extends RakBinaryStream
 		};
 
 		if (!$is_valid) {
-			Logger::warning("Received not valid datagram. (selected invalid datagram)");
+			var_dump("Received invalid datagram. (selected invalid datagram)");
 			$this->identifing_datagram = $create_datagram_func(InvalidDatagram::class);
 			return;
 		}
