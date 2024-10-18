@@ -1,0 +1,26 @@
+{
+    "name": "palethia/raknet",
+    "description": "raknet of palethia",
+    "type": "project",
+    "license": "GPL-3.0",
+    "autoload": {
+        "psr-4": {
+            "Laith98Dev\\palethia\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "vp817",
+            "email": "vpmcssscontact@gmail.com"
+        },
+        {
+            "name": "Laith98Dev",
+            "email": "spt.laithdev@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=8.2",
+        "pocketmine/binaryutils": "^0.2.6"
+    }
+}
