@@ -7,7 +7,7 @@ namespace Laith98Dev\palethia\network\raknet;
 class CongestionManager
 {
 
-	private const HALF_SPAN = (0xffffffff & 0xffffff) >> 1;
+	private const HALF_SPAN = 0x7fffff;
 
 	public int $expected_next_range_number = 0;
 
@@ -52,8 +52,7 @@ class CongestionManager
 		$adjustment = 440;
 		$shift = 7;
 
-		if ($this->mtu_size < 10000) {
-			$max_mtu_size = RakInfo::MAXIMUM_MTU_SIZE;
+		if ($this->mtu_size <= $max_mtu_size = RakInfo::MAXIMUM_MTU_SIZE) {
 			$def_adjustment = 145;
 			$def_shift = 4;
 
