@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Laith98Dev\palethia\network\raknet;
 
 use Exception;
-use Laith98Dev\palethia\console\Logger;
 use Laith98Dev\palethia\network\raknet\connection\ConnectionManager;
 use Laith98Dev\palethia\network\raknet\connection\ConnectionState;
 use Laith98Dev\palethia\network\raknet\handler\RakNetHandler;
@@ -93,7 +92,7 @@ abstract class RakPeer
 
         if (empty($info)) {
             if ($this instanceof RakClient) {
-                Logger::error("Socket/server/destination not found. shutting down...");
+                var_dump("Socket/server/destination not found. shutting down...");
                 $this->shutdown();
                 return false;
             } else {
@@ -119,9 +118,9 @@ abstract class RakPeer
         try {
             $this->downstream->handle($stream, $address);
         } catch (Exception $error) {
-            Logger::error("An error while handling downstream:", "Error Message: " . $error->getMessage(), "BackTrace: " . $error->getTraceAsString());
+            var_dump("An error while handling downstream:", "Error Message: " . $error->getMessage(), "BackTrace: " . $error->getTraceAsString());
             if (($prev = $error->getPrevious()) !== null) {
-                Logger::error("Previous Error Message: " . $prev->getMessage(), "Previous Trace: ", $prev->getTraceAsString());
+                var_dump("Previous Error Message: " . $prev->getMessage(), "Previous Trace: ", $prev->getTraceAsString());
             }
             $this->ghosted_addresses[strval($address)] = true;
         }
@@ -133,7 +132,6 @@ abstract class RakPeer
     {
         $this->is_running = false;
         $this->socket->close();
-        Logger::info("Palethia shutdown (" . round($this->getTime(), 3) . ")!");
     }
 
     public function getTime(): int
