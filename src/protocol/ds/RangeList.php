@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Laith98Dev\palethia\network\raknet\protocol\ds;
 
-use Laith98Dev\palethia\console\Logger;
 use Laith98Dev\palethia\network\raknet\RakBinaryStream;
 
 class RangeList
@@ -97,7 +96,7 @@ class RangeList
 
 			if (!$is_single) {
 				if ($max < $min) {
-					Logger::warning("max lower than min[dsrangelist], skipped range.");
+					var_dump("max lower than min[dsrangelist], skipped range.");
 					return;
 				}
 			}
