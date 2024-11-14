@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Laith98Dev\palethia\network\raknet\connection;
 
-use Laith98Dev\palethia\console\Logger;
 use Laith98Dev\palethia\network\raknet\InternetAddress;
+
 class ConnectionManager
 {
 
@@ -57,7 +57,7 @@ class ConnectionManager
 	{
 		$is_guid = is_int($value);
 		if (($is_guid ? !isset($this->glist[$value]) : !isset($this->list[strval($value)])) || (empty($this->list) & empty($this->glist))) {
-			Logger::error("ConnectionManager - $value is not included in list to get it's index.");
+			var_dump("ConnectionManager - $value is not included in list to get it's index.");
 			return 0;
 		}
 
