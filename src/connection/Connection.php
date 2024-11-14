@@ -565,7 +565,7 @@ class Connection
 					if (($sender_datagram_capsule_sizes + $next_packet_size) < $this->max_datagram_size_excluding_header_bytes) {
 						$capsules[] = $capsule;
 					} else {
-						Logger::error("packet bigger than mtu");
+						var_dump("packet bigger than mtu");
 						continue;
 					}
 				}
