@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Laith98Dev\palethia\network\raknet\connection;
 
-use Laith98Dev\palethia\console\Logger;
 use Laith98Dev\palethia\network\raknet\CongestionManager;
 use Laith98Dev\palethia\network\raknet\DatagramBuilder;
 use Laith98Dev\palethia\network\raknet\DsHeap;
@@ -368,7 +367,7 @@ class Connection
 			$this->state === ConnectionState::INCOMING_CONNECTION_INVALID_PORT ||
 			$this->state === ConnectionState::ACCEPTED_CONNECTION_INVALID_PORT
 		) {
-			Logger::error("HAS BEEN DISCONNECTED || INVALID PORT - shutdown & exitting (temp solution)");
+			var_dump("HAS BEEN DISCONNECTED || INVALID PORT - shutdown & exitting (temp solution)");
 			$this->peer->shutdown();
 			exit;
 			return;
@@ -420,7 +419,7 @@ class Connection
 
 					if (($server_port = $packet->server_address->port) !== $actual_server_port = $this->peer->address->port) {
 						$this->state = ConnectionState::INCOMING_CONNECTION_INVALID_PORT;
-						Logger::info("new incoming connection invalid port $server_port, the actual: $actual_server_port");
+						var_dump("new incoming connection invalid port $server_port, the actual: $actual_server_port");
 						return;
 					}
 
