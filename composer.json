@@ -18,7 +18,7 @@
             "email": "spt.laithdev@gmail.com"
         }
     ],
-    "minimum-stability": "stable",
+    "minimum-stability": "main",
     "require": {
         "php": ">=8.2",
         "pocketmine/binaryutils": "^0.2.6"
