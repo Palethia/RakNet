@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Laith98Dev\palethia\network\raknet\protocol;
 
-use Laith98Dev\palethia\console\Logger;
 use Laith98Dev\palethia\network\raknet\connection\Connection;
 use Laith98Dev\palethia\network\raknet\connection\ConnectionInfo;
 use Laith98Dev\palethia\network\raknet\InternetAddress;
@@ -65,7 +64,7 @@ class Downstream
 				$this->peer->upstream->openConnectionRequest(2, $address, $packet->mtu_size, $packet->server_security);
 				break;
 			case RakPacketId::INCOMPATIBLE_PROTOCOL_VERSION:
-				Logger::error("Incompatible protocol version");
+				var_dump("Incompatible protocol version");
 				$this->peer->shutdown();
 				break;
 			case RakPacketId::OPEN_CONNECTION_REQUEST_TWO:
@@ -116,7 +115,7 @@ class Downstream
 				$this->peer->upstream->connectionRequest($address);
 				break;
 			case RakPacketId::CONNECTION_ATTEMPT_FAILED:
-				Logger::error("Connection attempt failed");
+				var_dump("Connection attempt failed");
 				$this->peer->shutdown();
 				break;
 			default:
